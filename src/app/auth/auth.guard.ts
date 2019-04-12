@@ -1,11 +1,10 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
-import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
 import {AppState} from '../reducers';
 import {isLoggedIn} from './auth.selectors';
-import {tap} from 'rxjs/operators';
-
 
 
 @Injectable()
@@ -18,7 +17,7 @@ export class AuthGuard implements CanActivate {
 
 
   canActivate(route: ActivatedRouteSnapshot,
-              state: RouterStateSnapshot): Observable<boolean>  {
+              state: RouterStateSnapshot): Observable<boolean> {
 
     return this.store
       .pipe(
@@ -30,7 +29,7 @@ export class AuthGuard implements CanActivate {
           }
 
         })
-    );
+      );
 
   }
 

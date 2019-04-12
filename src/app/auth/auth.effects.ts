@@ -1,26 +1,26 @@
-import { Injectable } from '@angular/core';
-import {Actions, Effect, ofType} from '@ngrx/effects';
-import {AuthActionTypes, Login, Logout} from './auth.actions';
-import {tap} from 'rxjs/operators';
+import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
+import {Actions, Effect, ofType} from '@ngrx/effects';
 import {defer, of} from 'rxjs';
+import {tap} from 'rxjs/operators';
+import {AuthActionTypes, Login, Logout} from './auth.actions';
 
 
 @Injectable()
 export class AuthEffects {
 
-  @Effect({dispatch:false})
+  @Effect({dispatch: false})
   login$ = this.actions$.pipe(
     ofType<Login>(AuthActionTypes.LoginAction),
-    tap(action => localStorage.setItem("user", JSON.stringify(action.payload.user)))
+    tap(action => localStorage.setItem('user', JSON.stringify(action.payload.user)))
   );
 
-  @Effect({dispatch:false})
+  @Effect({dispatch: false})
   logout$ = this.actions$.pipe(
     ofType<Logout>(AuthActionTypes.LogoutAction),
     tap(() => {
 
-      localStorage.removeItem("user");
+      localStorage.removeItem('user');
       this.router.navigateByUrl('/login');
 
     })
@@ -29,18 +29,17 @@ export class AuthEffects {
   @Effect()
   init$ = defer(() => {
 
-    const userData = localStorage.getItem("user");
+    const userData = localStorage.getItem('user');
 
     if (userData) {
-       return of(new Login({user:JSON.parse(userData)}));
-    }
-    else {
+      return of(new Login({user: JSON.parse(userData)}));
+    } else {
       return <any>of(new Logout());
     }
 
   });
 
-  constructor(private actions$: Actions, private router:Router) {
+  constructor(private actions$: Actions, private router: Router) {
 
 
   }

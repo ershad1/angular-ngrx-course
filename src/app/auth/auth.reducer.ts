@@ -1,4 +1,3 @@
-import { Action } from '@ngrx/store';
 import {User} from '../model/user.model';
 import {AuthActions, AuthActionTypes} from './auth.actions';
 
@@ -24,10 +23,10 @@ export function authReducer(state = initialAuthState,
       };
 
     case AuthActionTypes.LogoutAction:
-        return {
-          loggedIn: false,
-          user: undefined
-        };
+      return {
+        loggedIn: false,
+        user: undefined
+      };
 
     default:
       return state;

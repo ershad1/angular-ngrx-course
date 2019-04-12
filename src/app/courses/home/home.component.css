@@ -1,20 +1,19 @@
 
-
 .title {
-    text-align: center;
+  text-align: center;
 }
 
 .courses-panel {
-    max-width: 350px;
-    margin: 0 auto;
+  max-width: 350px;
+  margin: 0 auto;
 }
 
 
 .counters {
-    display: flex;
+  display: flex;
 }
 
 .filler {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 

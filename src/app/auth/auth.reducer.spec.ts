@@ -1,4 +1,4 @@
-import { authReducer, initialAuthState } from './auth.reducer';
+import {authReducer, initialAuthState} from './auth.reducer';
 
 describe('Auth Reducer', () => {
   describe('unknown action', () => {
